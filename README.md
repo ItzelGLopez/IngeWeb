@@ -1,2 +1,2 @@
 # IngeWeb
-Página Web de gestion de tareas
+Compra de imagenes de Marvel (Pagina Web)

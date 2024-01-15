@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/Formu.css">
+<navbar>
+            <div class="navlist">
+                <div class="mylist">
+                    <ul class="list">
+                        <li><a href="#" onclick="INICIO()">Iniciar Sesion</a></li>
+                    </ul>
+                </div>
+            </div>
+        </navbar>
+    <main id="main">
+        <section id="section-form">
+            
+
+            <!-- formulario cambiar contraseña --> 
+            <form action="/modifica" method = "POST" name="formCon" id="formCon" style="display: block;">            
+                <div class="form-title">
+                    <h2>Cambiar contraseña</h2>
+                </div>
+                
+                <label for="userpasswd" >
+                    <input type="password" placeholder="Nueva contraseña" name="userpasswd" required>                
+                </label>
+                <label for="cpsswd" >
+                    <input type="password" placeholder="Confirmar contraseña" name="cpsswd" required>                
+                </label>
+                <button type="submit" id="btnC" >Guardar</button>
+                  
+                </form> 
+
+        </section>
+    </main> 
+    <script src="/js/Formu.js"></script>
+</body>
+</html>
+

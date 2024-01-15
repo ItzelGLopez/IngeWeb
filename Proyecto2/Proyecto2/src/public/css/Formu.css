@@ -1,0 +1,292 @@
+/* Estilos del cuerpo y fondo */
+body {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 90px 1fr;
+    height: 100vh;
+    background-color: black;
+    background: url("https://i.pinimg.com/originals/62/f5/fd/62f5fdfb9db8537fd4fbd6ea02a2765b.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .contenedor-texto{
+    text-align: center;
+    margin-top: 0px;
+    font-size: 30px;
+    color: #fafafa;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  p{
+    font-size: 18px;
+    color: #160075;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+  .contenedor-imagen{
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+  img{
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(251, 247, 247, 0.388);
+  }
+  .space{
+    margin-bottom: 55%;
+  }
+  navbar{
+    margin-left: 20%;
+    margin-right: 20%;
+    align-self: center;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    grid-template-rows: 60px;
+    background-color: rgba(251, 247, 247, 0.388);
+    backdrop-filter: blur(5px);
+    border-radius: 10px;
+  }
+  /* Estilos del encabezado y navegación */
+  header {
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 90px;
+    background-color: rgba(0, 0, 0, 0.637);
+    color: rgb(44, 5, 54);
+  }
+  
+  .navlist {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    text-decoration: solid;
+    color: rgba(0, 0, 0, 0.76);
+  }
+  
+  .mylist {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 250px;
+  }
+  
+  .list li {
+    display: inline-flex;
+    display: inline-block;
+    margin-right: 40px;
+    list-style: none;
+  }
+  
+  .list li a {
+    font-size: 25px;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    text-decoration: solid;
+  }
+  
+  /* Estilos del contenido principal */
+  #main {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px gray;
+    width: 100%;
+    height: auto;
+    margin: 35px auto;
+    display: flex;
+    margin-bottom: 0px;
+  }
+  
+  .flex-box {
+    width: 1250px;
+    height: auto;
+    margin: 0 auto;
+    margin: 2px;
+  }
+  
+  /* Estilos de los elementos dentro de los formularios */
+  .form-title {
+    margin-bottom: 40%;
+    text-align: center;
+  }
+  
+  form {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: rgba(251, 247, 247, 0.388);
+    border: 1px solid #a68d8d;
+    border-radius: 20px;
+    backdrop-filter: blur(2px);
+    display: block;
+  }
+  
+  form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  form input[type="text"],
+  form input[type="password"],
+  form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  .coltxt{
+    margin-left: 30%;
+    color: #fafafa;
+  }
+  .coltxt1{
+    
+    color: #fafafa;
+  }
+  .t11{
+    margin-bottom: 20%;
+  }
+  .btnsel{
+    margin-left: 20%;
+    margin-bottom: 40%;
+    align-items: center;
+    width: 20%;
+    padding: 10px;
+    background-color: rgb(7, 5, 128);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  form button {
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(7, 5, 128);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  form .link-container {
+    margin-left: 550px;
+    text-align: center;
+    margin-top: 10px;
+  }
+  
+  form .link-container a {
+    margin-left: 550px;
+    text-decoration: none;
+    color: #160075;
+  }
+  
+  form .link-container a:hover {
+    margin-left: 550px;
+  }
+  
+  #tabla {
+    text-decoration-color: azure;
+    margin-left: 550px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    border: 2px solid rgb(49, 49, 49);
+    width: 500px;
+    height: 500px;
+    background-color: rgba(251, 247, 247, 0.388);
+    backdrop-filter: blur(2px);
+    box-shadow: 2px 5px 15px rgb(255, 255, 255);
+    text-align: center;
+  }
+  
+  
+  /* Estilo responsive para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .mylist {
+        margin-right: 0;
+    }
+  
+    .list li {
+        margin-right: 10px;
+    }
+  
+    #main {
+        margin-left: 0;
+    }
+  
+    form {
+        padding: 20px;
+    }
+  
+    form input,
+    form select {
+        width: 100%;
+    }
+  }
+
+  .image-container {
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.image-item {
+    width: 20%; /* Ajusta según sea necesario */
+    
+    margin-bottom: 20px; /* Espacio entre las imágenes */
+}
+
+.img-thumbnail {
+  color: black;
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  height: 200px; /* Ajusta la altura según tus necesidades */
+  object-fit: cover; /* Ajusta el comportamiento de cómo se ajusta la imagen al tamaño especificado */
+  border-radius: 8px; /* Agrega bordes redondeados si lo deseas */
+}
+
+#carrito-container {
+  text-align: center;
+}
+
+.image-item {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+}
+
+.image-item img {
+  width: 150px; /* Ajusta el ancho de las imágenes según sea necesario */
+  height: 150px; /* Ajusta la altura de las imágenes según sea necesario */
+}
+.carrito-item {
+  display: inline-block;
+  margin: 10px;
+  text-align: center;
+}
+
+/* Estilo para el contenedor de fila */
+.carrito-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* Estilo para las imágenes en el carrito */
+.carrito-img {
+  width: 300px; /* Ajusta el tamaño según tus preferencias */
+  height: 300px; /* Ajusta el tamaño según tus preferencias */
+}

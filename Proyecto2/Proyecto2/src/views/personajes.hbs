@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="coltxt">{{title}}</title>
+    <link rel="stylesheet" href="/css/Formu.css">
+</head>
+<body>
+    <h1 id="title-table" class="coltxt">{{title}}</h1>
+    
+    <navbar>
+        <div class="navlist">
+            <div class="mylist">
+                <ul class="list">
+                    <li><a href="#" onclick="INICIO()">Iniciar Sesión</a></li>
+                    <li><a href="#" onclick="CARRITO()">Carrito</a></li>
+                    <li><a href="#" onclick="CERRAR()">Cerrar sesión</a></li>
+                </ul>
+            </div>
+        </div>
+    </navbar>
+
+     <form action="/cargar" method="GET" name="formbus" id="formbus" style="display: block;">            
+                <div class="form-title">
+                    <h2>Escriba el personaje que busca</h2>
+                </div>
+                 <label for="charname">
+                    <input type="text" placeholder="Personaje" name="charname" pattern="[a-zA-Z]+" required>   
+                </label>
+                <button type="submit" id="btnR0"  >Buscar</button> 
+            </form>  
+
+    <div class="image-container">
+        {{#each list}}
+            <div  class="bg-gray-800 text-gray-300 max-w-xs rounded-2xl overflow-hidden">
+                <p>{{name}}</p>
+                <a href="{{url}}" target="_blank">
+                    <img src="{{thumbnail}}" alt="{{name}}" class="img-thumbnail">
+                </a>
+                <button onclick="addToCart('{{name}}', '{{thumbnail}}')" class="btnsel">Agregar al carrito</button>
+            </div>
+        {{/each}}
+    </div>
+
+    <script src="/js/Formu.js"></script>
+</body>
+</html>

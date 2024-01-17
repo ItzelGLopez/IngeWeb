@@ -1,6 +1,7 @@
 import express from 'express';
 import { conn } from '../db.js';
 import { createHash } from 'crypto';
+import { log } from 'console';
 
 const app = express();
 
@@ -159,6 +160,32 @@ app.post('/agregarPersonajeAlCarrito', async(req, res)=>{
     catch(error){
         console.error('Error al actualizar carrito:', error);
         res.status(500).json({ msg: 'Error' });
+    }
+});
+// Función para borrar un personaje al carrito en la base de datos
+
+app.delete('/borrarCarrito', async (req, res) => {
+    const { usuarioId, nombrePersonaje } = req.body;
+    console.log(nombrePersonaje);
+
+    try {
+        // Obtener el ID del carrito del usuario
+        const [carrito] = await conn.query('SELECT id FROM Proyecto.Carritos WHERE usuario_id = ?', [usuarioId]);
+
+        // Verificar si el usuario tiene un carrito
+        if (carrito.length > 0) {
+            const carritoId = carrito[0].id;
+
+            // Borrar todos los personajes del carrito
+            await conn.execute('DELETE FROM Proyecto.PersonajesCarrito WHERE nombre_personaje = ?', [nombrePersonaje]);
+
+            res.json({ msg: 'Carrito eliminado exitosamente' });
+        } else {
+            res.status(404).json({ msg: 'El usuario no tiene un carrito asociado' });
+        }
+    } catch (error) {
+        console.error('Error al eliminar carrito:', error);
+        res.status(500).json({ msg: 'Error al eliminar carrito' });
     }
 });
 

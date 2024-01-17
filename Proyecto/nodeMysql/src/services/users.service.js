@@ -228,6 +228,24 @@ export const agregarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imag
     }
 };
 
+export const borrarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imagenPersonaje) => {
+    try {
+        const response = await fetch('http://localhost:2000/borrarCarrito', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({usuarioId, nombrePersonaje, imagenPersonaje}),
+        });
+        const result = await response.json();
+        return result;
+        
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error en la autenticación");
+    }
+};
+
 export const obtenerPersonajesCarrito = async (userId) => {
     try {
         const response = await fetch('http://localhost:2000/obtenerPersonajesCarrito', {

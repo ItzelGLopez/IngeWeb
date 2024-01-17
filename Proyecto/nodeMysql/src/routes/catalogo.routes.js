@@ -4,7 +4,7 @@ import { agregarpersonajeAlCarrito, mostrarCarrito, showCatalogo,Tokenauth} from
 
 const router = Router();
 
-router.get('/catalogo',Tokenauth, showCatalogo);
+router.get('/catalogo', showCatalogo);
 router.get('/carrito', mostrarCarrito);
 
 // Ruta para agregar al carrito

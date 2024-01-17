@@ -1,7 +1,8 @@
 // users.routes.js
 
 import { Router } from "express";
-import { getAllUsers, login, registerUser,deleteUser, recoverPassword, updatePassword,Tokenauth, updatePasswordByAdmin, updateUByAdmin, updateUserDataByAdmin } from "../controllers/users.controllers.js";
+import { getAllUsers, login, registerUser,deleteUser, recoverPassword, updatePassword,Tokenauth, updatePasswordByAdmin, updateUByAdmin, updateUserDataByAdmin, logout, borrarPersonajesDelCarrito } from "../controllers/users.controllers.js";
+import { borrarPersonajeAlCarrito } from "../services/users.service.js";
 
 const router = Router();
 
@@ -28,10 +29,12 @@ router.get("/index", (req, res) => {
 });
 
 
+router.post("/delete-perso",borrarPersonajesDelCarrito);
 router.post("/delete-user",Tokenauth,deleteUser);  // Nueva ruta para eliminar usuarios
 router.post("/update-user-by-admin",Tokenauth,updateUByAdmin); 
 router.get("/recover-password", recoverPassword);  // Nueva ruta para recuperar contraseña
 router.post("/update-password-admin",Tokenauth,updateUserDataByAdmin);  // Nueva ruta para recuperar contraseña
 router.post("/update-password", updatePassword);
+router.get('/logout', logout);
 export default router;
 

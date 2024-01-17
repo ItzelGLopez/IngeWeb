@@ -252,7 +252,7 @@ export const mostrarCarrito = async (req, res) => {
 };
 
 // Controlador para agregar al carrito
-export const agregarpersonajeAlCarrito = async (req, res) => {
+/*export const agregarpersonajeAlCarrito = async (req, res) => {
     const { name, thumbnail } = req.body;
     const token = req.cookies.token;
     const correo = verificarToken(token);
@@ -266,7 +266,54 @@ export const agregarpersonajeAlCarrito = async (req, res) => {
         console.error(error);
         res.render("error404", {titulo: "Error al agregar personajes", descripcion: "Error al insertar en el carrito"});
     }
+};*/
+
+export const logout = (req, res) => {
+    // Elimina la cookie que contiene el token
+    res.clearCookie('token');
+  
+    // Redirecciona a la página de inicio u otra página deseada
+    res.redirect('/');
+};
+  
+export const agregarpersonajeAlCarrito = async (req, res) => {
+    try {
+        // Utiliza Tokenauth para verificar el token antes de procesar la compra
+        Tokenauth(req, res, async () => {
+            const { name, thumbnail } = req.body;
+            const token = req.cookies.token;
+            const correo = verificarToken(token);
+            req.email = correo;
+            const userData = await userService.getUserByEmail(correo);
+
+            // Continúa con la lógica de agregar al carrito si el token es válido
+            userService.agregarPersonajeAlCarrito(userData.id, name, thumbnail);
+            res.redirect('/catalogo');
+        });
+    } catch (error) {
+        console.error(error);
+        res.render("error404", {titulo: "Error al agregar personajes", descripcion: "Error al insertar en el carrito"});
+    }
 };
 
+export const borrarPersonajesDelCarrito = async (req, res) => {
+    try {
+        // Utiliza Tokenauth para verificar el token antes de borrar los personajes del carrito
+        Tokenauth(req, res, async () => {
+            const { nombre_personaje, imagen_personaje } = req.body;
+            console.log(nombre_personaje);
+            const token = req.cookies.token;
+            const correo = verificarToken(token);
+            req.email = correo;
+            const userData = await userService.getUserByEmail(correo);
 
+            // Continúa con la lógica de borrar personajes del carrito si el token es válido
+            await userService.borrarPersonajeAlCarrito(userData.id,nombre_personaje,imagen_personaje);
+            res.redirect('/carrito');
+        });
+    } catch (error) {
+        console.error(error);
+        res.render("error404", {titulo: "Error al borrar personajes del carrito", descripcion: "Error al borrar personajes del carrito"});
+    }
+};
 

@@ -243,12 +243,14 @@ export const updatePassword = async (req, res) => {
 
 // Controlador para mostrar el carrito
 export const mostrarCarrito = async (req, res) => {
-    const token = req.cookies.token;
-    const correo = verificarToken(token);
-    req.email = correo;
-    const userData = await userService.getUserByEmail(correo);
-    const carrito = await userService.obtenerPersonajesCarrito(userData.id);
-  res.render('carrito', { title: 'Carrito de Compras', carrito });
+    Tokenauth(req, res, async () => {
+        const token = req.cookies.token;
+        const correo = verificarToken(token);
+        req.email = correo;
+        const userData = await userService.getUserByEmail(correo);
+        const carrito = await userService.obtenerPersonajesCarrito(userData.id);
+        res.render('carrito', { title: 'Carrito de Compras', carrito });
+    });
 };
 
 // Controlador para agregar al carrito

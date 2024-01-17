@@ -1,32 +1,100 @@
-<!-- carrito.hbs -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Carrito de Compras</title>
-    <link rel="stylesheet" href="/css/estilos.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .carrito {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .item-carrito {
+            margin: 20px;
+            padding: 10px;
+            text-align: center;
+            border: 2px solid rgb(49, 49, 49);
+            border-radius: 10px;
+            width: calc(33.33% - 40px); /* Ajusta el ancho para que haya 3 imágenes por fila */
+            box-sizing: border-box;
+            display: inline-block;
+            flex-basis: calc(33.33% - 40px); /* Limita a 3 elementos por fila */
+        }
+
+        .item-carrito img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            border: 2px solid rgb(49, 49, 49); /* Añade un marco alrededor de la imagen */
+            margin-bottom: 10px; /* Añade espacio entre la imagen y el botón */
+        }
+
+        .item-carrito h2 {
+            color: rgb(10, 10, 10);
+            margin-top: 10px;
+        }
+
+        .item-carrito form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: rgb(19, 19, 19);
+            color: rgb(247, 244, 244);
+            font-size: 14px;
+            padding: 8px 15px;
+            border: none;
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        button:active {
+            background-color: rgb(48, 47, 48);
+        }
+    </style>
 </head>
 <body>
 
     <header class="site-header inicio">
-        <!-- ... tu código de encabezado ... -->
+        <div class="contenedor contenido-header">
+            <div class="barra">
+                <a href="/inicio">
+                    <div class="contenedor-logo-marvel">
+                        <img src="css/img/logo_marvel.png" alt="Logotipo de MARVEL">
+                    </div>
+                </a>
+                <nav class="navegacion">
+                    <a href="/catalogo">Catalogo</a>
+                    <a href="/personajes">Personajes</a>
+                </nav>
+            </div>
+
+            <h1>Carrito</h1>
+        </div> <!-- contenedor -->
     </header>
 
     <content>
         <div class="carrito">
-            <h1>Carrito de Compras</h1>
             {{#if carrito.length}}
                 {{#each carrito}}
                     <div class="item-carrito">
                         <h2>{{nombre_personaje}}</h2>
                         <img src="{{imagen_personaje}}" alt="{{nombre_personaje}}">
+                        <form action="/delete-perso" method="post">
+                            <input type="hidden" name="nombre_personaje" value="{{nombre_personaje}}">
+                            <input type="hidden" name="imagen_personaje" value="{{imagen_personaje}}">
+                            <button type="submit">Eliminar del Carrito</button>
+                        </form>
                     </div>
-                    <form action="/delete-perso" method="post">
-                    <input type="hidden" name="nombre_personaje" value="{{nombre_personaje}}">
-                    <input type="hidden" name="imagen_personaje" value="{{imagen_personaje}}">
-                    <button type="submit">Eliminar del Carrito</button>
-                    </form>
                 {{/each}}
             {{else}}
                 <p>El carrito está vacío.</p>

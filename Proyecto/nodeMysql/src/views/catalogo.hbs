@@ -75,15 +75,16 @@
 }
 
 button {
-    background-color: rgb(19, 19, 19);
+      background-color: #f70a0a;
     color: rgb(247, 244, 244);
-    font-size: 18px;
+    font-size: 14px;
     padding: 8px 15px;
     border: none;
-    outline: none;
     border-radius: 10px;
-    cursor: pointer;
-    margin-top: 10px; /* Agregar un margen superior para separar el botón del campo de entrada */
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+    
 }
 
 
@@ -112,7 +113,24 @@ button:active {
 .personaje .ver-mas-btn:hover {
     background-color: rgb(48, 47, 48);
 }
+.imagen-carrito{
+    margin-left: 20px;
+    width:50px;
+}
 
+.imagen-carrito{
+    margin-left: 20px;
+    width:50px;
+}
+
+.boton-logout{
+    
+    width:50px;
+}
+
+.Blog-out{
+    background-color: none;
+}
 
     </style>
 </head>
@@ -129,13 +147,24 @@ button:active {
                 <nav class="navegacion">
                     <a href="/catalogo">Catalogo</a>
                     <a href="/personajes">Personajes</a>
-                    <div class="logout-btn">
-                    <form action="/logout" method="get">
-                    <button type="submit">Cerrar sesión</button>
-                    </form>
-                    </div>
+                   
+
                     <div class="boton-iniciar-sesion">
                         <a href="/index">INICIAR SESION </a>
+                    </div>
+
+                     <div >                  
+                        <form action="/logout" method="get">
+                        <button type="submit" >
+                            <img src="css/img/button.png" alt="boton de log-out" class="boton-logout">
+                        </button>
+                        </form>
+                    </div>
+
+                    <div class="boton-carrito">
+                        <a href="/carrito">
+                            <img src="css/img/carmal.png" alt="Carrito" class="imagen-carrito">
+                        </a>
                     </div>
                     
                     

@@ -1,6 +1,7 @@
 <!-- catalogo.hbs -->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,12 +23,12 @@
             border: 1px solid #ccc;
             width: 200px;
             background-color: rgba(251, 247, 247, 0.388);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgb(49, 49, 49);
-    border-radius: 20px;
-    padding: 20px;
-    box-shadow: 2px 5px 15px black;
-    
+            backdrop-filter: blur(20px);
+            border: 2px solid rgb(49, 49, 49);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 2px 5px 15px black;
+
         }
 
         .personaje img {
@@ -37,17 +38,17 @@
 
 
         .personaje h2 {
-    color: rgb(10, 10, 10);
-    margin-top: 10px;
-}
+            color: rgb(10, 10, 10);
+            margin-top: 10px;
+        }
 
-.personaje a {
-    color: rgb(19, 19, 19);
-    text-decoration: none;
-    font-weight: bold;
-    display: block;
-    margin-top: 10px;
-}
+        .personaje a {
+            color: rgb(19, 19, 19);
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
 
 
         .search-bar {
@@ -61,82 +62,87 @@
         }
 
         .search-bar label {
-    font-size: 20px; /* Ajustar el tamaño de la letra en la etiqueta "Buscar" */
-    display: block;
-    text-align: center; /* Centrar el texto dentro de la etiqueta "Buscar" */
-    margin-right: 30px;
-}
+            font-size: 20px;
+            /* Ajustar el tamaño de la letra en la etiqueta "Buscar" */
+            display: block;
+            text-align: center;
+            /* Centrar el texto dentro de la etiqueta "Buscar" */
+            margin-right: 30px;
+        }
 
-.search-bar form {
-    display: flex;
-    align-items: center;
-    flex-direction: column; /* Ajustar el diseño del formulario a una columna */
-    margin-left: auto;
-}
+        .search-bar form {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            /* Ajustar el diseño del formulario a una columna */
+            margin-left: auto;
+        }
 
-button {
-      background-color: #f70a0a;
-    color: rgb(247, 244, 244);
-    font-size: 14px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-    
-}
+        button {
+            background-color: #f70a0a;
+            color: rgb(247, 244, 244);
+            font-size: 14px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+
+        }
 
 
-button:active {
-    background-color: rgb(48, 47, 48);
-}
+        button:active {
+            background-color: rgb(48, 47, 48);
+        }
 
-.personaje h2 {
-    color: rgb(10, 10, 10);
-    margin-top: 10px;
-    font-size: 18px; /* Ajusta el tamaño de la letra según tus preferencias */
-}
+        .personaje h2 {
+            color: rgb(10, 10, 10);
+            margin-top: 10px;
+            font-size: 18px;
+            /* Ajusta el tamaño de la letra según tus preferencias */
+        }
 
-.personaje .ver-mas-btn {
-    background-color: rgb(19, 19, 19);
-    color: rgb(247, 244, 244);
-    font-size: 14px;
-    padding: 8px 15px;
-    border: none;
-    border-radius: 10px;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 10px;
-}
+        .personaje .ver-mas-btn {
+            background-color: rgb(19, 19, 19);
+            color: rgb(247, 244, 244);
+            font-size: 14px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+        }
 
-.personaje .ver-mas-btn:hover {
-    background-color: rgb(48, 47, 48);
-}
-.imagen-carrito{
-    margin-left: 20px;
-    width:50px;
-}
+        .personaje .ver-mas-btn:hover {
+            background-color: rgb(48, 47, 48);
+        }
 
-.imagen-carrito{
-    margin-left: 20px;
-    width:50px;
-}
+        .imagen-carrito {
+            margin-left: 20px;
+            width: 50px;
+        }
 
-.boton-logout{
-    
-    width:50px;
-}
+        .imagen-carrito {
+            margin-left: 20px;
+            width: 50px;
+        }
 
-.Blog-out{
-    background-color: none;
-}
+        .boton-logout {
 
+            width: 50px;
+        }
+
+        .Blog-out {
+            background-color: none;
+        }
     </style>
 </head>
+
 <body>
-    
-<header class="site-header inicio">
+
+    <header class="site-header inicio">
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/inicio">
@@ -147,26 +153,12 @@ button:active {
                 <nav class="navegacion">
                     <a href="/catalogo">Catalogo</a>
                     <a href="/personajes">Personajes</a>
-                   
+                    <a href="/logout">Cerrar Sesión</a>
+                    <a href="/carrito">Carrito</a>
 
                     <div class="boton-iniciar-sesion">
                         <a href="/index">INICIAR SESION </a>
                     </div>
-
-                     <div >                  
-                        <form action="/logout" method="get">
-                        <button type="submit" >
-                            <img src="pic/button.png" alt="boton de log-out" class="boton-logout">
-                        </button>
-                        </form>
-                    </div>
-
-                    <div class="boton-carrito">
-                        <a href="/carrito">
-                            <img src="img/comic/carrito.png" alt="Carrito" class="imagen-carrito">
-                        </a>
-                    </div>
-                    
                     
                 </nav>
             </div>
@@ -186,18 +178,19 @@ button:active {
 
         <div class="catalogo">
             {{#each catalogo}}
-                <div class="personaje">
-                    <img src="{{thumbnail}}" alt="{{name}}">
-                    <h2>{{name}}</h2>
-                    <form action="/agregar-al-carrito" method="post">
+            <div class="personaje">
+                <img src="{{thumbnail}}" alt="{{name}}">
+                <h2>{{name}}</h2>
+                <form action="/agregar-al-carrito" method="post">
                     <input type="hidden" name="name" value="{{name}}">
                     <input type="hidden" name="thumbnail" value="{{thumbnail}}">
                     <button type="submit">Agregar al Carrito</button>
-                    </form>
-                    <a href="{{url}}" target="_blank" class="ver-mas-btn">Ver más</a>
-                </div>
+                </form>
+                <a href="{{url}}" target="_blank" class="ver-mas-btn">Ver más</a>
+            </div>
             {{/each}}
         </div>
     </content>
 </body>
+
 </html>

@@ -23,10 +23,12 @@ router.get("/inicio", (req, res) => {
     res.render("inicio", { titulo: "Pagina inicio de Marvel" });
 });
 
+
 router.get("/index", (req, res) => {
     // Renderizar la vista del formulario de registro
     res.render("index", { titulo: "ingresar de Marvel" });
 });
+
 
 
 router.post("/delete-perso",borrarPersonajesDelCarrito);

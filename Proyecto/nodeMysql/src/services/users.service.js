@@ -45,8 +45,8 @@ export const getCatalogo = async (charname) => {
         name: hero.name,
         thumbnail: `${hero.thumbnail.path}.${hero.thumbnail.extension}`,
         url: hero.urls[0].url,
+        precio: Math.floor((hero.id-(999999))/1000),
       }));
-      //console.log(character);
       return character;
 
     } catch (error) {

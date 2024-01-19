@@ -1,5 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -20,18 +22,22 @@
             text-align: center;
             border: 2px solid rgb(49, 49, 49);
             border-radius: 10px;
-            width: calc(33.33% - 40px); /* Ajusta el ancho para que haya 3 imágenes por fila */
+            width: calc(33.33% - 40px);
+            /* Ajusta el ancho para que haya 3 imágenes por fila */
             box-sizing: border-box;
             display: inline-block;
-            flex-basis: calc(33.33% - 40px); /* Limita a 3 elementos por fila */
+            flex-basis: calc(33.33% - 40px);
+            /* Limita a 3 elementos por fila */
         }
 
         .item-carrito img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
-            border: 2px solid rgb(49, 49, 49); /* Añade un marco alrededor de la imagen */
-            margin-bottom: 10px; /* Añade espacio entre la imagen y el botón */
+            border: 2px solid rgb(49, 49, 49);
+            /* Añade un marco alrededor de la imagen */
+            margin-bottom: 10px;
+            /* Añade espacio entre la imagen y el botón */
         }
 
         .item-carrito h2 {
@@ -62,7 +68,9 @@
         }
     </style>
 </head>
+
 <body>
+
 
     <header class="site-header inicio">
         <div class="contenedor contenido-header">
@@ -85,23 +93,28 @@
     <content>
         <div class="carrito">
             {{#if carrito.length}}
-                {{#each carrito}}
-                    <div class="item-carrito">
-                        <h2>{{nombre_personaje}}</h2>
-                        <p>${{precio}}</p>
-                        <img src="{{imagen_personaje}}" alt="{{nombre_personaje}}">
-                        <form action="/delete-perso" method="post">
-                            <input type="hidden" name="nombre_personaje" value="{{nombre_personaje}}">
-                            <input type="hidden" name="imagen_personaje" value="{{imagen_personaje}}">
-                            <button type="submit">Eliminar del Carrito</button>
-                        </form>
-                    </div>
-                {{/each}}
+            {{#each carrito}}
+            <div class="item-carrito">
+                <h2>{{nombre_personaje}}</h2>
+                <p>${{precio}}</p>
+                <img src="{{imagen_personaje}}" alt="{{nombre_personaje}}">
+                <form action="/delete-perso" method="post">
+                    <input type="hidden" name="nombre_personaje" value="{{nombre_personaje}}">
+                    <input type="hidden" name="imagen_personaje" value="{{imagen_personaje}}">
+                    <button type="submit">Eliminar del Carrito</button>
+                </form>
+            </div>
+            {{/each}}
+            <!-- Botón "Proceder al pago" -->
+            <form action="/checkout" method="get">
+                <button type="submit">Proceder al pago</button>
+            </form>
             {{else}}
-                <p>El carrito está vacío.</p>
+            <p>El carrito está vacío.</p>
             {{/if}}
         </div>
     </content>
 
 </body>
+
 </html>

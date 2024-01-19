@@ -8,6 +8,8 @@ import { fileURLToPath } from 'url';
 import indexRoutes from './routes/index.routes.js';
 import usersRoutes from './routes/users.routes.js';
 import catalogoRoutes from './routes/catalogo.routes.js';
+
+
 // obtiene la ruta raiz del proyecto
 const PORT = 3000;
 
@@ -30,17 +32,7 @@ app.set("view engine", "hbs");
 app.set("views", __dirname+"/views");
 hbs.registerPartials(__dirname + '/views/partials', function (err) {});
 
-/*
-app.use((req, res, next) => {
-  res.status(404).render("error404", {
-      titulo: "404",
-      descripcion: "Página no encontrada"
-  })
-})*/
 
-
-
-//app.use(express.json());
 app.use (indexRoutes);
 app.use (usersRoutes);
 app.use(catalogoRoutes);

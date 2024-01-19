@@ -349,3 +349,28 @@ font-weight: 300;
     color: #f70a0a;
 }
 
+
+#contenedor-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin-top: 50px; /* Ajusta el margen superior según tus preferencias */
+}
+
+#proceder-pago {
+    width: 200px; /* Ancho del botón */
+    font-size: 18px;
+    padding: 15px;
+    background-color: rgb(19, 19, 19);
+    color: rgb(247, 244, 244);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    outline: none;
+}
+
+#proceder-pago:active {
+    background-color: rgb(48, 47, 48);
+}

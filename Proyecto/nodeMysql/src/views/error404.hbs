@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,8 +9,9 @@
     <link rel='stylesheet' href='/css/estilos.css' />
     <link rel='stylesheet' href='/css/style.css' />
 </head>
+
 <body>
-    
+
     <header class="site-header inicio">
         <div class="contenedor contenido-header">
             <div class="barra">
@@ -28,8 +29,8 @@
                         <a href="/index">INICIAR SESION </a>
 
                     </div>
-                    
-                    
+
+
                 </nav>
             </div>
 
@@ -37,15 +38,33 @@
         </div> <!-- contenedor -->
     </header>
 
-   
-  <content class="error_gral">
-    <div class="container">
-        <p class="titError404">
-            {{titulo}}
-        </p>
-        <p class="error404">{{descripcion}}</p>
-    </div>
-</content>
 
+    <content class="error_gral">
+        <div class="container">
+            <p class="titError404">
+                {{titulo}}
+            </p>
+            <p class="error404">{{descripcion}}</p>
+        </div>
+    </content>
+    <section class="imagen-personajes">
+        <div class="contenedor contenido-contacto">
+            <h2>PERSONAJES</h2>
+            <p>Encuentra los personajes más emblemáticos</p>
+            <a href="/personajes" class="boton boton-rojo">VER PERSONAJES</a>
+        </div>
+    </section>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/catalogo">Catálogo</a>
+                <a href="/personajes">Personajes</a>
+                <a href="/index">INICIAR SESIÓN</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
+        </div>
+    </footer>
 </body>
+
 </html>

@@ -122,7 +122,7 @@ app.put('/update-user', async (req, res) => {
 // DELETE
 app.delete('/delete', async (req, res) => {
     const { userId } = req.body;
-
+    console.log(userId);
 
     try {
         const [results] = await conn.execute('DELETE FROM Proyecto.Usuarios WHERE id = ?', [userId]);
@@ -214,7 +214,20 @@ app.put('/pago', async (req, res) => {
 
     try {
         const [results] = await conn.query('UPDATE Proyecto.Usuarios SET calle=?, colonia=?, codigo_postal=?, municipio_delgacion=?, estado=?, telefono=?, num_tarjeta=?, fecha_expiracion=?, cvv=? WHERE id=?', [calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, id]);
+        // Obtener el ID del carrito del usuario
+        const [carrito] = await conn.query('SELECT id FROM Proyecto.Carritos WHERE usuario_id = ?', [id]);
 
+        // Verificar si el usuario tiene un carrito
+        if (carrito.length > 0) {
+            const carritoId = carrito[0].id;
+
+            // Borrar todos los personajes del carrito
+            await conn.execute('DELETE FROM Proyecto.PersonajesCarrito WHERE carrito_id = ?', [carritoId]);
+            await conn.execute('DELETE FROM Proyecto.carritos WHERE usuario_id = ?', [id]);
+            res.json({ msg: 'Carrito eliminado exitosamente' });
+        } else {
+            res.status(404).json({ msg: 'El usuario no tiene un carrito asociado' });
+        }
         console.log('Resultado de la inserción:', results);
 
         res.json(results);

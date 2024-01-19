@@ -40,7 +40,7 @@ function verificarToken(token)
 
 export const Tokenauth = async (req, res, next) => {
    const token = req.cookies.token;
-   console.log('cookies:', req.cookies);
+   //console.log('cookies:', req.cookies);
  
    if (!token) {
      return res.render("error404", {
@@ -120,6 +120,7 @@ export const registerUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
     const { userId } = req.body;
+    console.log(userId);
     try {
         if (userId) {
             await userService.deleteU(userId);

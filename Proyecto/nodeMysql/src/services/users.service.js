@@ -133,6 +133,7 @@ export const register = async (name, email, passwd, secQuestion, secAnswer, role
 };
 
 export const deleteU = async (userId) => {
+    console.log(userId);
     try {
         const response = await fetch(`http://localhost:2000/delete?id=${userId}`, {
             method: 'DELETE',

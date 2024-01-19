@@ -43,19 +43,29 @@ document.addEventListener("DOMContentLoaded", function () {
     loginButton.addEventListener("click", function () {
         const username = document.getElementById("username").value;
         const password = createHash(document.getElementById("password").value);
-
+        var boton = document.getElementsByClassName("boton-iniciar-sesion");
+        var imagen = document.getElementsByClassName("miImagen");
+        var cerrar = document.getElementsByClassName("cerrar");
         // Verificar si el usuario y la contraseña coinciden con los datos del JSON
         const usuarioValido = usuariosValidos.find(user => user.user === username && user.passwd === password);
 
         if (usuarioValido) {
             alert("Inicio de sesión exitoso");
-
+            boton.style.display = "none";
+            imagen.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/User_icon_2.svg/640px-User_icon_2.svg.png"; 
+            imagen.style.display = "block";
+            cerrar.style.display="block"
             // Mostrar la tabla de usuarios
             mostrarTablaUsuarios(usuariosValidos);
         } else {
             alert("Usuario o contraseña incorrectos");
         }
     });
+
+    function ocultarCerrar(){
+        var cerrar = document.getElementsByClassName("cerrar")
+        cerrar.style.display="none"
+    }
 
     // Event listener para el vínculo "Olvidé mi contraseña"
     forgotPasswordLink.addEventListener("click", function () {

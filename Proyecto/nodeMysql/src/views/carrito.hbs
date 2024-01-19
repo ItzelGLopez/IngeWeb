@@ -131,7 +131,31 @@
             <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
         </div>
     </footer>
-</body>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Obtén todos los elementos con la clase 'precio' dentro del carrito
+        const precios = document.querySelectorAll('.item-carrito p');
+
+        // Convierte los precios a números y suma el total
+        let total = 0;
+        precios.forEach(precio => {
+            const precioNumerico = parseFloat(precio.textContent.replace('$', ''));
+            total += precioNumerico;
+        });
+
+        // Crea un elemento para mostrar el total y agrégalo justo antes del botón "Proceder al pago"
+        const totalElement = document.createElement('p');
+        totalElement.textContent = `Total a pagar: $${total.toFixed(2)}`;
+
+        // Obtén el contenedor principal y el botón "Proceder al pago"
+        const contenedorPrincipal = document.getElementById('contenedor-principal');
+        const botonProcederPago = document.getElementById('proceder-pago');
+
+        // Inserta el elemento del total antes del botón "Proceder al pago"
+        contenedorPrincipal.insertBefore(totalElement, botonProcederPago);
+    });
+</script>
+
 </body>
 
 </html>

@@ -92,6 +92,11 @@ content {
     color: rgb(10, 10, 10);
 }
 
+.inputForm form{
+    margin-right: 5px;
+    margin-left: 9px;
+}
+
 .inputForm {
     grid-column: 1/2;
     grid-row: 2/3;
@@ -118,15 +123,16 @@ content {
 #confirmPassword,
 #secQuestion,
 #secAnswer {
-    background-color: transparent;
-    border: none;
+    background-color: whitesmoke;
+    border-color: black;
+    border-radius: 2px;
+    border-width: 1px;
     outline: none;
     font-size: 15px;
     transition: all 0.3s ease;
     margin-left: 5px;
     letter-spacing: 2px;
 }
-
 
 
 #forgotText {

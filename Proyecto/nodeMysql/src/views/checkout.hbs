@@ -15,6 +15,9 @@
             margin: 0;
             padding: 0;
             background-color: #f7f7f7;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -30,35 +33,36 @@
         }
 
         .content {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
         }
 
         /* Estilos específicos del formulario de checkout */
         .checkout-form {
-            background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente */
+            background-color: rgba(255, 255, 255, 0.8);
             border: 1px solid #ccc;
-            border-radius: 10px; /* Bordes redondeados */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
-            padding: 15px; /* Reducir el espacio interno */
-            max-width: 400px; /* Ajustar el ancho máximo según tus necesidades */
-            margin: 20px auto; /* Centrar el formulario con un margen superior e inferior */
-            color: #000; /* Color del texto: negro */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            max-width: 400px;
+            margin: 20px auto;
+            color: #000;
+            margin-bottom: 50px;
         }
 
         .checkout-form label {
             font-size: 14px;
             display: block;
-            margin-bottom: 3px; /* Reducir el espacio entre las etiquetas */
+            margin-bottom: 3px;
         }
 
         .checkout-form input,
         .checkout-form select {
             width: 100%;
             padding: 8px;
-            margin-bottom: 10px; /* Reducir el espacio entre los campos de entrada */
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
             box-sizing: border-box;
@@ -86,6 +90,15 @@
         .checkout-form button:active {
             background-color: #191919;
         }
+
+        /* Estilos del footer */
+        footer {
+            background-color: #212121;
+            color: #f7f7f7;
+            padding: 1em;
+            text-align: center;
+            margin-top: auto;
+        }
     </style>
 </head>
 
@@ -105,7 +118,10 @@
                     <a href="/carrito">Carrito</a>
                 </nav>
             </div>
-            <div class="content">
+        </div>
+    </header>
+
+    <div class="content">
                 <div class="checkout-form">
                     <form action="/pagoCarrito" method="post">
                         <label for="calle">Calle:</label>
@@ -211,8 +227,6 @@
                     </form>
                 </div>
             </div>
-        </div> <!-- contenedor -->
-    </header>
 
     <footer class="site-footer seccion">
         <div class="contenedor contenedor-footer">

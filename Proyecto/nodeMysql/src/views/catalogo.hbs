@@ -196,31 +196,7 @@
             <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
         </div>
     </footer>
-
-    <script>
-    // Simula si el usuario ha iniciado sesión o no (puedes cambiar esto según tu lógica real)
-    const usuarioHaIniciadoSesion = false; // Cambia a 'true' si el usuario ha iniciado sesión
-
-    document.addEventListener("DOMContentLoaded", function () {
-        const botonCerrarSesion = document.querySelector('a[href="/logout"]');
-        const botonIniciarSesion = document.querySelector('.boton-iniciar-sesion');
-
-        // Oculta el botón "Cerrar Sesión" si el usuario no ha iniciado sesión
-        if (!usuarioHaIniciadoSesion && botonCerrarSesion) {
-            botonCerrarSesion.style.display = "none";
-        }
-
-        // Oculta el botón "Iniciar Sesión" si el usuario ha iniciado sesión
-        if (usuarioHaIniciadoSesion && botonIniciarSesion) {
-            botonIniciarSesion.style.display = "none";
-        }
-    });
-</script>
-
-
-
-
-
+    
 </body>
 
 </html>

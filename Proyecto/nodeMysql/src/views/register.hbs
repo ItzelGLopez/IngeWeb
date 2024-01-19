@@ -20,11 +20,14 @@
                     </div>
                 </a>
                 <nav class="navegacion">
-                    <a href="/catalogo">Catálogo</a>
+                    <a class="cerrar" href="/logout" onclick="ocultarCerrar()" style="display: none;">Cerrar sesión</a>
+                    <a href="/catalogo">Catalogo</a>
                     <a href="/personajes">Personajes</a>
                     <div class="boton-iniciar-sesion">
-                        <a href="/index">INICIAR SESIÓN </a>
+                        <a href="/index">INICIAR SESION </a>
                     </div>
+                    
+                    <img class="miImagen" src="" alt="Imagen Oculta" style="display: none;" >
                 </nav>
             </div>
             <h1>Registro de usuario</h1>
@@ -67,8 +70,11 @@
 
                         <div class="passForm">
                             <label for="secQuestion">Pregunta de seguridad:</label>
-                            <input type="text" id="secQuestion" name="secQuestion" required
-                                placeholder="PREGUNTA DE SEGURIDAD"><br>
+                            <select id="newusr-security-question" name="newusr-security-question">
+                            <option value="Color favorito">Color favorito</option>
+                            <option value="Escuela">Escuela</option>
+                            <option value="día de cumpleaños">día de cumpleaños</option>
+                            </select><br>
                         </div>
 
                         <div class="passForm">

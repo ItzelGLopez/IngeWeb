@@ -183,17 +183,32 @@ h5{
 /**anuncios**/
 .contenedor-anuncios{
     display: flex;
+    
 }
 .anuncio{
     flex-basis: calc(33.3% - 1rem);
     border: 1px solid #b5b5b5;
     background-color: #f5f5f5;
+    margin-left: 40px;
+    align-items: center;
 }
 .contenido-anuncio{
-    padding: 2rem;
+    padding: 1rem;
+    margin-right: 15px;
+
+}
+
+.img-xmen{
+    margin-right: 0px;
+    height: 375px;
+}
+
+.cap_marvel{
+    width:300px;
 }
 .contenido-anuncio h3 ,.contenido-anuncio{
     margin: 0;
+    margin-left: 40px;
 }
 .precio{
     color: #f70a0a;

@@ -97,7 +97,7 @@
             </div>
 
             <div class="anuncio">
-                <img src="css/img/comic/x-men.jpg" alt="X-MEN">
+                <img src="css/img/comic/x-men.jpg" alt="X-MEN" class="img-xmen">
                 <div class="contenido-anuncio">
                     <h3>X-Men</h3>
                     <p>Un grupo de mutantes dirigidos por el Profesor X, luchan por la coexistencia pacífica entre
@@ -113,7 +113,7 @@
                 <div class="contenido-anuncio">
                     <h3>Fantastic Four </h3>
                     <p>Mr. Fantástico, la Mujer Invisible, la Antorcha Humana y La Cosa exploran el espacio y enfrentan
-                        desafíos cósmicos como equipo.
+                        desafíos cósmicos como equipo.Tienen distintas peliculas que ayudaron 
                     </p>
                     <p class="precio">$400</p>
                     <a href="/catalogo" class="boton boton-rojo d-block">COMPRAR</a>
@@ -154,7 +154,7 @@
 
             <article class="entrada-blog">
                 <div class "imagen">
-                    <img src="css/img/cap_mar.jpg" alt="Entrada de blog">
+                    <img src="css/img/cap_mar.jpg" alt="Entrada de blog" class="cap_marvel">
                 </div>
                 <div class="texto-entrada">
                     <a href="#">
@@ -181,11 +181,30 @@
             <nav class="navegacion">
                 <a href="/catalogo">Catálogo</a>
                 <a href="/personajes">Personajes</a>
-                <a href="/index">INICIAR SESIÓN</a>
+                <a href="/users">Gestión</a>
             </nav>
             <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
         </div>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Simula si el usuario es un administrador o no (ajusta según tu lógica real)
+        const esAdmin = true; // Cambia a 'false' si el usuario no es administrador
+
+        // Crea el elemento del botón para /users
+        const botonUsuarios = document.createElement('a');
+        botonUsuarios.href = "/users";
+        botonUsuarios.textContent = "Usuarios";
+
+        // Obtén el contenedor de la navegación
+        const navegacion = document.querySelector('.navegacion');
+
+        // Inserta el botón de usuarios después del botón de personajes si el usuario es admin
+        if (esAdmin) {
+            navegacion.insertBefore(botonUsuarios, navegacion.children[2]); // Inserta después del tercer elemento (botón de personajes)
+        }
+    });
+</script>
 </body>
 
 </html>

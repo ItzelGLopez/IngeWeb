@@ -75,10 +75,30 @@
             <nav class="navegacion">
                 <a href="/catalogo">Catálogo</a>
                 <a href="/personajes">Personajes</a>
+                <a href="/users">Gestión</a>
             </nav>
             <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
         </div>
     </footer>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Simula si el usuario es un administrador o no (ajusta según tu lógica real)
+        const esAdmin = true; // Cambia a 'false' si el usuario no es administrador
+
+        // Crea el elemento del botón para /users
+        const botonUsuarios = document.createElement('a');
+        botonUsuarios.href = "/users";
+        botonUsuarios.textContent = "Usuarios";
+
+        // Obtén el contenedor de la navegación
+        const navegacion = document.querySelector('.navegacion');
+
+        // Inserta el botón de usuarios después del botón de personajes si el usuario es admin
+        if (esAdmin) {
+            navegacion.insertBefore(botonUsuarios, navegacion.children[2]); // Inserta después del tercer elemento (botón de personajes)
+        }
+    });
+</script>
 </body>
 
 </html>

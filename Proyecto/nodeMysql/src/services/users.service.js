@@ -264,3 +264,24 @@ export const obtenerPersonajesCarrito = async (userId) => {
         throw new Error("Error en la autenticación");
     }
 };
+
+export const addPaymentMethod = async (calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, id) => {
+    try {
+        const response = await fetch(`http://localhost:2000/pago`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, id}),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.msg || "Error al actualizar el usuario");
+        }
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error al actualizar el usuario");
+    }
+};

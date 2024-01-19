@@ -319,3 +319,22 @@ export const borrarPersonajesDelCarrito = async (req, res) => {
     }
 };
 
+export const mostrarFormularioPago = (req, res) => {
+    // Renderiza la vista del formulario de pago
+    res.render('checkout', { titulo: 'Información de Pago' });
+};
+
+export const addPaymentMethod = async (req, res) => {
+    const {calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv} = req.body;
+    const token = req.cookies.token;
+            const correo = verificarToken(token);
+            req.email = correo;
+            const userData = await userService.getUserByEmail(correo);
+        try {
+            await userService.addPaymentMethod(calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, userData.id);
+            res.render("exito", {titulo: "Pago finalizado", descripcion: "Su pago ha sido concretado"});
+        } catch (error) {
+            console.error(error);
+            res.render("error404", {titulo: "Error al cambiar datos de usuario", descripcion: "Error al actualizar el usuario"});
+        }
+ };

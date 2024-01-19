@@ -1,8 +1,8 @@
 // users.routes.js
 
 import { Router } from "express";
-import { getAllUsers, login, registerUser,deleteUser, recoverPassword, updatePassword,Tokenauth, updatePasswordByAdmin, updateUByAdmin, updateUserDataByAdmin, logout, borrarPersonajesDelCarrito } from "../controllers/users.controllers.js";
-import { borrarPersonajeAlCarrito } from "../services/users.service.js";
+import { getAllUsers, login, registerUser,deleteUser, recoverPassword, updatePassword,Tokenauth, updatePasswordByAdmin, updateUByAdmin, updateUserDataByAdmin, logout, borrarPersonajesDelCarrito, mostrarFormularioPago, addPaymentMethod } from "../controllers/users.controllers.js";
+
 
 const router = Router();
 
@@ -29,8 +29,8 @@ router.get("/index", (req, res) => {
     res.render("index", { titulo: "ingresar de Marvel" });
 });
 
-
-
+router.post("/pagoCarrito", addPaymentMethod);
+router.get('/checkout', mostrarFormularioPago);
 router.post("/delete-perso",borrarPersonajesDelCarrito);
 router.post("/delete-user",Tokenauth,deleteUser);  // Nueva ruta para eliminar usuarios
 router.post("/update-user-by-admin",Tokenauth,updateUByAdmin); 

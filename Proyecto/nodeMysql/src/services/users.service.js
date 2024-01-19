@@ -210,14 +210,14 @@ export const updateUserDataByAdmin = async (id, name, email, password, secQuesti
     }
 };
 
-export const agregarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imagenPersonaje) => {
+export const agregarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imagenPersonaje, precio) => {
     try {
         const response = await fetch('http://localhost:2000/agregarPersonajeAlCarrito', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({usuarioId, nombrePersonaje, imagenPersonaje}),
+            body: JSON.stringify({usuarioId, nombrePersonaje, imagenPersonaje, precio}),
         });
         const result = await response.json();
         return result;

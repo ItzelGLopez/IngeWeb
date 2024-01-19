@@ -8,6 +8,6 @@ router.get('/catalogo', showCatalogo);
 router.get('/carrito', mostrarCarrito);
 
 // Ruta para agregar al carrito
-router.post('/agregar-al-carrito', agregarpersonajeAlCarrito);
+router.post('/agregarPersonajeAlCarrito', agregarpersonajeAlCarrito);
 
 export default router;

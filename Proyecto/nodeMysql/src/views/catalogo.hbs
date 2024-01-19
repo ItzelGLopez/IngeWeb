@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -163,20 +164,21 @@
         </div>
 
         <div class="catalogo">
-    {{#each catalogo}}
-        <div class="personaje">
-            <img src="{{thumbnail}}" alt="{{name}}" alt="{{precio}}">
-            <h2>{{name}}</h2>
-            <p>${{precio}}</p>
-            <form action="/agregar-al-carrito" method="post">
-                <input type="hidden" name="name" value="{{name}}">
-                <input type="hidden" name="thumbnail" value="{{thumbnail}}">
-                <input type="hidden" name="precio" value="{{precio}}">
-                <button type="submit">Agregar al Carrito</button>
-            </form>
+            {{#each catalogo}}
+            <div class="personaje">
+                <img src="{{thumbnail}}" alt="{{name}}" alt="{{precio}}">
+                <h2>{{name}}</h2>
+                <p>${{precio}}</p>
+                <form action="/agregarPersonajeAlCarrito" method="post">
+                    <input type="hidden" name="usuarioId" value="{{usuarioId}}">
+                    <input type="hidden" name="name" value="{{name}}">
+                    <input type="hidden" name="thumbnail" value="{{thumbnail}}">
+                    <input type="hidden" name="precio" value="{{precio}}">
+                    <button type="submit">Agregar al Carrito</button>
+                </form>
+            </div>
+            {{/each}}
         </div>
-    {{/each}}
-</div>
     </content>
 </body>
 

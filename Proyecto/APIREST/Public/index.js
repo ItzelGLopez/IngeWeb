@@ -1,3 +1,4 @@
+//index.js
 import express from 'express';
 import { conn } from '../db.js';
 import { createHash } from 'crypto';
@@ -138,26 +139,25 @@ app.delete('/delete', async (req, res) => {
 
 
 // Función para agregar un personaje al carrito en la base de datos
-app.post('/agregarPersonajeAlCarrito', async(req, res)=>{
-    const {usuarioId, nombrePersonaje, imagenPersonaje} = req.body;
-    console.log(nombrePersonaje);
-    console.log(usuarioId);
-    try{
+app.post('/agregarPersonajeAlCarrito', async (req, res) => {
+    const { usuarioId, nombrePersonaje, imagenPersonaje, precio } = req.body;
+
+    try {
         const [carrito] = await conn.query('SELECT id FROM Proyecto.Carritos WHERE usuario_id = ?', [usuarioId]);
-  
+
         // Crear el carrito si no existe
         if (carrito.length === 0) {
-          await conn.query('INSERT INTO Carritos (usuario_id) VALUES (?)', [usuarioId]);
+            await conn.query('INSERT INTO Carritos (usuario_id) VALUES (?)', [usuarioId]);
         }
-      
+
         // Obtener el carrito del usuario (ahora debe existir)
         const [carritoActualizado] = await conn.query('SELECT id FROM Proyecto.Carritos WHERE usuario_id = ?', [usuarioId]);
-      
-        // Agregar el personaje al carrito
-        console.log('idCarrito: '+ carritoActualizado[0].id);
-        await conn.query('INSERT INTO Proyecto.PersonajesCarrito (carrito_id, nombre_personaje, imagen_personaje) VALUES (?, ?, ?)', [carritoActualizado[0].id, nombrePersonaje, imagenPersonaje]);
-    }
-    catch(error){
+
+        // Agregar el personaje al carrito con precio
+        await conn.query('INSERT INTO Proyecto.PersonajesCarrito (carrito_id, precio, nombre_personaje, imagen_personaje) VALUES (?, ?, ?, ?)', [carritoActualizado[0].id, precio, nombrePersonaje, imagenPersonaje]);
+        
+        res.json({ msg: 'Personaje agregado al carrito correctamente' });
+    } catch (error) {
         console.error('Error al actualizar carrito:', error);
         res.status(500).json({ msg: 'Error' });
     }

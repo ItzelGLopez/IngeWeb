@@ -282,14 +282,14 @@ export const agregarpersonajeAlCarrito = async (req, res) => {
     try {
         // Utiliza Tokenauth para verificar el token antes de procesar la compra
         Tokenauth(req, res, async () => {
-            const { name, thumbnail } = req.body;
+            const { name, thumbnail, precio } = req.body;
             const token = req.cookies.token;
             const correo = verificarToken(token);
             req.email = correo;
             const userData = await userService.getUserByEmail(correo);
-
+            console.log(name, thumbnail, precio );
             // Continúa con la lógica de agregar al carrito si el token es válido
-            userService.agregarPersonajeAlCarrito(userData.id, name, thumbnail);
+            userService.agregarPersonajeAlCarrito(userData.id, name, thumbnail, precio);
             res.redirect('/catalogo');
         });
     } catch (error) {

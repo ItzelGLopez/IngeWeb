@@ -1,4 +1,3 @@
-<!-- catalogo.hbs -->
 <!DOCTYPE html>
 <html lang="es">
 
@@ -28,14 +27,12 @@
             border-radius: 20px;
             padding: 20px;
             box-shadow: 2px 5px 15px black;
-
         }
 
         .personaje img {
             max-width: 100%;
             height: auto;
         }
-
 
         .personaje h2 {
             color: rgb(10, 10, 10);
@@ -50,7 +47,6 @@
             margin-top: 10px;
         }
 
-
         .search-bar {
             margin: 20px 0;
             background-color: rgba(251, 247, 247, 0.388);
@@ -63,10 +59,8 @@
 
         .search-bar label {
             font-size: 20px;
-            /* Ajustar el tamaño de la letra en la etiqueta "Buscar" */
             display: block;
             text-align: center;
-            /* Centrar el texto dentro de la etiqueta "Buscar" */
             margin-right: 30px;
         }
 
@@ -74,7 +68,6 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            /* Ajustar el diseño del formulario a una columna */
             margin-left: auto;
         }
 
@@ -88,9 +81,7 @@
             text-decoration: none;
             display: inline-block;
             margin-top: 10px;
-
         }
-
 
         button:active {
             background-color: rgb(48, 47, 48);
@@ -100,7 +91,6 @@
             color: rgb(10, 10, 10);
             margin-top: 10px;
             font-size: 18px;
-            /* Ajusta el tamaño de la letra según tus preferencias */
         }
 
         .personaje .ver-mas-btn {
@@ -130,7 +120,6 @@
         }
 
         .boton-logout {
-
             width: 50px;
         }
 
@@ -151,21 +140,18 @@
                     </div>
                 </a>
                 <nav class="navegacion">
-                    <a href="/catalogo">Catalogo</a>
+                    <a href="/catalogo">Catálogo</a>
                     <a href="/personajes">Personajes</a>
-                    <a href="/logout">Cerrar Sesión</a>
                     <a href="/carrito">Carrito</a>
-
+                    <a href="/logout">Cerrar Sesión</a>
                     <div class="boton-iniciar-sesion">
-                        <a href="/index">INICIAR SESION </a>
+                        <a href="/index">INICIAR SESIÓN </a>
                     </div>
-                    
                 </nav>
             </div>
-            <h1>C A T A L O G O</h1>
+            <h1>C A T Á L O G O</h1>
         </div> <!-- contenedor -->
     </header>
-
 
     <content>
         <div class="search-bar">
@@ -179,18 +165,62 @@
         <div class="catalogo">
             {{#each catalogo}}
             <div class="personaje">
-                <img src="{{thumbnail}}" alt="{{name}}">
+                <img src="{{thumbnail}}" alt="{{name}}" alt="{{precio}}">
                 <h2>{{name}}</h2>
-                <form action="/agregar-al-carrito" method="post">
+                <p>${{precio}}</p>
+                <form action="/agregarPersonajeAlCarrito" method="post">
+                    <input type="hidden" name="usuarioId" value="{{usuarioId}}">
                     <input type="hidden" name="name" value="{{name}}">
                     <input type="hidden" name="thumbnail" value="{{thumbnail}}">
+                    <input type="hidden" name="precio" value="{{precio}}">
                     <button type="submit">Agregar al Carrito</button>
                 </form>
-                <a href="{{url}}" target="_blank" class="ver-mas-btn">Ver más</a>
             </div>
             {{/each}}
         </div>
     </content>
+    <section class="imagen-personajes">
+        <div class="contenedor contenido-contacto">
+            <h2>PERSONAJES</h2>
+            <p>Encuentra los personajes más emblemáticos</p>
+            <a href="/personajes" class="boton boton-rojo">VER PERSONAJES</a>
+        </div>
+    </section>
+
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/catalogo">Catálogo</a>
+                <a href="/personajes">Personajes</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
+        </div>
+    </footer>
+
+    <script>
+    // Simula si el usuario ha iniciado sesión o no (puedes cambiar esto según tu lógica real)
+    const usuarioHaIniciadoSesion = false; // Cambia a 'true' si el usuario ha iniciado sesión
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const botonCerrarSesion = document.querySelector('a[href="/logout"]');
+        const botonIniciarSesion = document.querySelector('.boton-iniciar-sesion');
+
+        // Oculta el botón "Cerrar Sesión" si el usuario no ha iniciado sesión
+        if (!usuarioHaIniciadoSesion && botonCerrarSesion) {
+            botonCerrarSesion.style.display = "none";
+        }
+
+        // Oculta el botón "Iniciar Sesión" si el usuario ha iniciado sesión
+        if (usuarioHaIniciadoSesion && botonIniciarSesion) {
+            botonIniciarSesion.style.display = "none";
+        }
+    });
+</script>
+
+
+
+
+
 </body>
 
 </html>

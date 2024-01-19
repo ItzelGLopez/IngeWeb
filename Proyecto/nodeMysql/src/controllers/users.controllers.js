@@ -40,7 +40,7 @@ function verificarToken(token)
 
 export const Tokenauth = async (req, res, next) => {
    const token = req.cookies.token;
-   console.log('cookies:', req.cookies);
+   //console.log('cookies:', req.cookies);
  
    if (!token) {
      return res.render("error404", {
@@ -120,6 +120,7 @@ export const registerUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
     const { userId } = req.body;
+    console.log(userId);
     try {
         if (userId) {
             await userService.deleteU(userId);
@@ -282,14 +283,14 @@ export const agregarpersonajeAlCarrito = async (req, res) => {
     try {
         // Utiliza Tokenauth para verificar el token antes de procesar la compra
         Tokenauth(req, res, async () => {
-            const { name, thumbnail } = req.body;
+            const { name, thumbnail, precio } = req.body;
             const token = req.cookies.token;
             const correo = verificarToken(token);
             req.email = correo;
             const userData = await userService.getUserByEmail(correo);
-
+            console.log(name, thumbnail, precio );
             // Continúa con la lógica de agregar al carrito si el token es válido
-            userService.agregarPersonajeAlCarrito(userData.id, name, thumbnail);
+            userService.agregarPersonajeAlCarrito(userData.id, name, thumbnail, precio);
             res.redirect('/catalogo');
         });
     } catch (error) {
@@ -319,3 +320,22 @@ export const borrarPersonajesDelCarrito = async (req, res) => {
     }
 };
 
+export const mostrarFormularioPago = (req, res) => {
+    // Renderiza la vista del formulario de pago
+    res.render('checkout', { titulo: 'Información de Pago' });
+};
+
+export const addPaymentMethod = async (req, res) => {
+    const {calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv} = req.body;
+    const token = req.cookies.token;
+            const correo = verificarToken(token);
+            req.email = correo;
+            const userData = await userService.getUserByEmail(correo);
+        try {
+            await userService.addPaymentMethod(calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, userData.id);
+            res.render("exito", {titulo: "Pago finalizado", descripcion: "Su pago ha sido concretado"});
+        } catch (error) {
+            console.error(error);
+            res.render("error404", {titulo: "Error al cambiar datos de usuario", descripcion: "Error al actualizar el usuario"});
+        }
+ };

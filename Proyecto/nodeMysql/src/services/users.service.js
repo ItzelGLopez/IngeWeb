@@ -45,8 +45,8 @@ export const getCatalogo = async (charname) => {
         name: hero.name,
         thumbnail: `${hero.thumbnail.path}.${hero.thumbnail.extension}`,
         url: hero.urls[0].url,
+        precio: Math.floor((hero.id-(999999))/1000),
       }));
-      //console.log(character);
       return character;
 
     } catch (error) {
@@ -133,6 +133,7 @@ export const register = async (name, email, passwd, secQuestion, secAnswer, role
 };
 
 export const deleteU = async (userId) => {
+    console.log(userId);
     try {
         const response = await fetch(`http://localhost:2000/delete?id=${userId}`, {
             method: 'DELETE',
@@ -210,14 +211,14 @@ export const updateUserDataByAdmin = async (id, name, email, password, secQuesti
     }
 };
 
-export const agregarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imagenPersonaje) => {
+export const agregarPersonajeAlCarrito = async (usuarioId, nombrePersonaje, imagenPersonaje, precio) => {
     try {
         const response = await fetch('http://localhost:2000/agregarPersonajeAlCarrito', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({usuarioId, nombrePersonaje, imagenPersonaje}),
+            body: JSON.stringify({usuarioId, nombrePersonaje, imagenPersonaje, precio}),
         });
         const result = await response.json();
         return result;
@@ -262,5 +263,26 @@ export const obtenerPersonajesCarrito = async (userId) => {
     } catch (error) {
         console.error(error);
         throw new Error("Error en la autenticación");
+    }
+};
+
+export const addPaymentMethod = async (calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, id) => {
+    try {
+        const response = await fetch(`http://localhost:2000/pago`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({calle, colonia, codigo_postal, municipio_delegacion, estado, telefono, num_tarjeta, fecha_expiracion, cvv, id}),
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.msg || "Error al actualizar el usuario");
+        }
+    } catch (error) {
+        console.error(error);
+        throw new Error("Error al actualizar el usuario");
     }
 };

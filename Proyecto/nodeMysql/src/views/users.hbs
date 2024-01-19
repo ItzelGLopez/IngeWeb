@@ -8,10 +8,65 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.css">
-</head><!-- users.hbs -->
+    <style>
+        /* Estilos para la tabla y el título */
+        #table-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        #table-title {
+            background-color: rgba(0, 0, 0, 0.2);
+            color: #000;
+            padding: 10px;
+            margin: 0;
+        }
+
+        #table-users {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #table-users th,
+        #table-users td {
+            border: none; /* Elimina las líneas visibles */
+            padding: 8px;
+            text-align: left;
+        }
+
+        #table-users th {
+            background-color: rgba(242, 242, 242, 0.8);
+        }
+
+        /* Estilos para los botones */
+        button {
+            padding: 8px 12px;
+            cursor: pointer;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            margin-right: 5px; /* Separación entre botones */
+        }
+
+        /* Estilos para el botón "Registrar Nuevo Usuario" */
+        .btn-registrar {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
 
 <body>
-<header class="site-header inicio">
+    <header class="site-header inicio">
         <div class="contenedor contenido-header">
             <div class="barra">
                 <a href="/inicio">
@@ -20,43 +75,51 @@
                     </div>
                 </a>
                 <nav class="navegacion">
-                    <a href="/catalogo">Catalogo</a>
+                    <a href="/catalogo">Catálogo</a>
                     <a href="/personajes">Personajes</a>
-                    <div class="boton-iniciar-sesion">
-                        <a href="/index">INICIAR SESION </a>
-                    </div>
-                    
-                    
                 </nav>
             </div>
-            <h1>USUARIOS ADMIN </h1>
+            <div id="table-container">
+                <h1 id="table-title">{{title}}</h1>
+                <table id="table-users">
+                    <thead>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Acciones</th>
+                    </thead>
+                    {{#each list}}
+                    <tr>
+                        <td>{{name}}</td>
+                        <td>{{email}}</td>
+                        <td>{{role}}</td>
+                        <td>
+                            <!-- Botón Borrar -->
+                            <form action="/delete-user" method="post">
+                                <input type="hidden" name="userId" value="{{id}}">
+                                <button type="submit">Borrar</button>
+                            </form>
+                            <form action="/update-user-by-admin" method="post">
+                                <input type="hidden" name="email" value="{{email}}">
+                                <button type="submit">Editar Usuario</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <h1>USUARIOS ADMIN</h1>
         </div> <!-- contenedor -->
     </header>
-
-
-<h1 id="title-table">{{title}}</h1>
-<a href="/register" class="btn-registrar">Registrar Nuevo Usuario</a>
-<table id="table-users">
-  <thead>
-    <th>nombre</th><th>correo</th><th>acciones</th>
-  </thead>
-  {{#each list}}
-    <tr>
-      <td>{{name}}</td>
-      <td>{{email}}</td>
-      <td>{{role}}</td>
-      <td>
-        <!-- Botón Borrar -->
-        <form action="/delete-user" method="post">
-          <input type="hidden" name="userId" value="{{id}}">
-          <button type="submit">Borrar</button>
-        </form>
-        <form action="/update-user-by-admin" method="post">
-          <input type="hidden" name="email" value="{{email}}">
-          <button type="submit">Editar Usuario</button>
-        </form>
-      </td>
-    </tr>
-  {{/each}}
-</table>
+    <footer class="site-footer seccion">
+        <div class="contenedor contenedor-footer">
+            <nav class="navegacion">
+                <a href="/catalogo">Catálogo</a>
+                <a href="/personajes">Personajes</a>
+                <a href="/index">INICIAR SESIÓN</a>
+            </nav>
+            <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
+        </div>
+    </footer>
 </body>
+
+</html>

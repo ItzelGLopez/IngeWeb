@@ -142,8 +142,8 @@
                 <nav class="navegacion">
                     <a href="/catalogo">Catálogo</a>
                     <a href="/personajes">Personajes</a>
-                    <a href="/logout">Cerrar Sesión</a>
                     <a href="/carrito">Carrito</a>
+                    <a href="/logout">Cerrar Sesión</a>
                     <div class="boton-iniciar-sesion">
                         <a href="/index">INICIAR SESIÓN </a>
                     </div>
@@ -197,6 +197,31 @@
             <p class="copyright">Todos los derechos reservados 2024 &copy;</p>
         </div>
     </footer>
+    <script>
+        // Simula si el usuario ha iniciado sesión o no (puedes cambiar esto según tu lógica real)
+        const usuarioHaIniciadoSesion = false; // Cambia a 'true' si el usuario ha iniciado sesión
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const botonCerrarSesion = document.querySelector('a[href="/logout"]');
+            const botonIniciarSesion = document.querySelector('.boton-iniciar-sesion');
+            const botonCarrito = document.querySelector('a[href="/carrito"]');
+
+            // Oculta el botón "Cerrar Sesión" y "Carrito" si el usuario no ha iniciado sesión
+            if (!usuarioHaIniciadoSesion) {
+                if (botonCerrarSesion) {
+                    botonCerrarSesion.style.display = "none";
+                }
+                if (botonCarrito) {
+                    botonCarrito.style.display = "none";
+                }
+            } else {
+                // Oculta el botón "Iniciar Sesión" si el usuario ha iniciado sesión
+                if (botonIniciarSesion) {
+                    botonIniciarSesion.style.display = "none";
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
